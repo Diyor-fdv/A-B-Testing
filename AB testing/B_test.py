@@ -22,10 +22,10 @@ group_b = pd.DataFrame({
     'clicked': np.random.binomial(1, 0.14, n_users)
 })
 
-# Ikki guruhni birlashtiramiz
+
 df = pd.concat([group_a, group_b], ignore_index=True)
 
-# Har bir guruh uchun CTR ni hisoblaymiz
+
 ctr = df.groupby('group')['clicked'].mean() * 100
 
 print("CTR (Click Through Rate):")
@@ -33,11 +33,11 @@ print(ctr)
 
 from scipy.stats import ttest_ind
 
-# Ikkala guruhni alohida olamiz
+
 a_clicks = df[df['group'] == 'A']['clicked']
 b_clicks = df[df['group'] == 'B']['clicked']
 
-# T-test (Independent sample t-test)
+
 t_stat, p_value = ttest_ind(a_clicks, b_clicks)
 
 print(f"T-statistic: {t_stat}")
